@@ -1,38 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Math Game</title>
-  <style>
-    #startButtonContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    }
-    #scoreText {
-    margin-right: 10px;
-     }
-    body {
-      text-align: center;
-      font-family: Arial, sans-serif;
-    }
-    #startButton {
-    float: left;
-    }
-    #question {
-      font-size: 24px;
-      margin: 20px;
-    }
-    #answer {
-      font-size: 18px;
-      margin: 10px;
-    }
-    #result {
-      font-size: 20px;
-      margin: 10px;
-    }
-  </style>
+  <link rel = "stylesheet" href="style.css" >
 </head>
 <body>
   <h1>เกมคณิตศาสตร์</h1>
@@ -43,66 +15,18 @@
   </div>
   
   
-  <p id="question">Press "Start" to begin.</p>
+  <p id="question">"Start"</p>
   
   <button onclick="changeOperator('+')">+</button>
   <button onclick="changeOperator('-')">-</button>
   <button onclick="changeOperator('*')">*</button>
   <button onclick="changeOperator('/')">/</button>
   
-  <p><button onclick="checkAnswer()">Answer</button></body></p>
+  <p><button id ="AnswerButton" onclick="checkAnswer()">Answer</button></body></p>
   
   <p id="answer"><input type="number" id="userAnswer" placeholder="Your answer"></p>
   <p id="result"></p>
 
-  <script>
-    let operator = '+';
-    let num1, num2, correctAnswer;
-
-    function generateQuestion() {
-      num1 = Math.floor(Math.random() * 10) + 1;
-      num2 = Math.floor(Math.random() * 10) + 1;
-      correctAnswer = calculateAnswer(num1, num2, operator);
-      document.getElementById('question').textContent = num1 + ' ' + operator + ' ' + num2;
-      document.getElementById('answer').style.display = 'block';
-      document.getElementById('result').textContent = '';
-    }
-
-    function calculateAnswer(num1, num2, operator) {
-      switch (operator) {
-        case '+':
-          return num1 + num2;
-        case '-':
-          return num1 - num2;
-        case '*':
-          return num1 * num2;
-        case '/':
-          return num1 / num2;
-      }
-    }
-
-    function changeOperator(newOperator) {
-      operator = newOperator;
-      generateQuestion();
-    }
-
-    function checkAnswer() {
-      const userAnswer = parseInt(document.getElementById('userAnswer').value);
-      if (userAnswer === correctAnswer) {
-        score.correct++; // เพิ่มจำนวนข้อถูกต้อง
-        score.total++;   // เพิ่มจำนวนข้อทั้งหมด
-        document.getElementById('result').textContent = 'ถูกต้อง!';
-      } else {
-        score.total++;   // เพิ่มจำนวนข้อทั้งหมด
-        document.getElementById('result').textContent = 'ผิด!.';
-      }
-      document.getElementById('scoreText').textContent = `คะแนน: ${score.correct}/${score.total}`;
-    }
-    // เพิ่มตัวแปร score
-    let score = {
-    correct: 0,
-    total: 0
-    }; 
-  </script>
+  <script src = "web.js"></script>
 </body>
 </html>
