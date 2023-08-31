@@ -1,1 +1,1 @@
-# Math_game
+# Mathgame
